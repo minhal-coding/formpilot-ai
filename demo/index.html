@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FormPilot · Fictional application demo</title>
+<style>*{box-sizing:border-box}body{font:15px/1.6 system-ui,sans-serif;color:#152441;background:#f4f6fa;margin:0}main{max-width:860px;margin:40px auto;padding:42px;background:white;border:1px solid #dce2eb;border-radius:8px}header{border-bottom:1px solid #dce2eb;padding-bottom:24px;margin-bottom:24px}h1{font-size:32px;letter-spacing:-1px;margin:0}p{color:#56647c}h2{font-size:19px;margin:26px 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}label{display:block;font-weight:600}input:not([type=checkbox]),textarea,select{display:block;font:inherit;width:100%;border:1px solid #c8d2e1;padding:9px 12px;border-radius:4px;margin-top:5px;background:white}textarea{min-height:84px}.wide{grid-column:1/-1}button{font:inherit;padding:10px 18px;border:1px solid #c8d2e1;border-radius:4px;background:#f4f6fa;cursor:pointer}.note{background:#eef3ff;padding:14px;border-radius:5px}.checks{margin-top:24px;border-top:1px solid #dce2eb;padding-top:20px}#counters{font-variant-numeric:tabular-nums;color:#28563b}.trap{display:none}fieldset{border:1px solid #e0e5ed;margin:24px 0;padding:18px}legend{font-weight:600}footer{display:flex;gap:12px;margin-top:24px}@media(max-width:620px){main{margin:12px;padding:22px}.grid{grid-template-columns:1fr}}</style></head>
+<body><main><header><h1>A little less typing.<br>A lot more control.</h1><p>FormPilot application demo · Fictional role at Example Studio</p><div class="note">Open FormPilot → use the fictional sample → scan → review → fill selected.<br>This offline demo counts change events to demonstrate autosave behavior. It sends nothing to a server.</div></header>
+<form id="application"><h2>About you</h2><div class="grid">
+<div><label for="full-name">Full name</label><input id="full-name" name="full_name" autocomplete="name"></div>
+<div><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email"></div>
+<div><label for="phone">Phone</label><input id="phone" type="tel" name="phone"></div>
+<div><span id="city-label">City</span><input id="city" aria-labelledby="city-label" name="city"></div>
+<div><label for="state">State</label><select id="state" name="state"><option value="">Choose a state</option><option value="OR">Oregon</option><option value="CA">California</option><option value="NY">New York</option></select></div>
+<div><label for="school">School</label><input id="school" name="school"></div>
+<div class="wide"><label for="education">Education</label><textarea id="education" name="education"></textarea></div>
+<div class="wide"><label for="work">Work history</label><textarea id="work" name="work"></textarea></div>
+<div><label for="preferred">Preferred name</label><input id="preferred" value="Keep this answer" name="preferred"></div>
+<div><label for="portfolio">Portfolio URL</label><input id="portfolio" type="url" name="portfolio"></div>
+<div class="wide"><label for="background">Professional background</label><textarea id="background" name="background"></textarea></div>
+<div class="wide"><label for="motivation">What makes this role a good fit?</label><textarea id="motivation" name="motivation"></textarea></div>
+</div><fieldset><legend>Manual-only questions</legend>
+<label for="authorization">Will you need sponsorship to work here?</label><input id="authorization" name="authorization">
+<label for="accommodation">What adjustments would help you perform this role?</label><textarea id="accommodation" name="accommodation"></textarea>
+<label for="password">Password</label><input id="password" type="password" autocomplete="new-password">
+<label><input id="attestation" type="checkbox"> I certify that my answers are accurate.</label>
+</fieldset><div class="trap"><label>Leave blank<input name="honeypot"></label></div>
+<footer><button type="submit">Submit demo application</button><button type="reset">Reset form</button></footer></form>
+<section class="checks"><h2>Live verification</h2><p id="counters" role="status">Input events: 0 · Change / autosave events: 0 · Submissions: 0</p><button id="mutate" type="button">Change email label after scan</button><p>Changing a field after scanning must make FormPilot skip it. An existing answer must stay unchanged.</p></section></main><script src="demo.js"></script></body></html>

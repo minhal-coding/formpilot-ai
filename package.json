@@ -1,0 +1,22 @@
+{
+  "name": "formpilot-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:browser": "node tests/browser.mjs",
+    "demo": "node scripts/demo.mjs",
+    "bridge": "node scripts/bridge.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.3.0",
+    "@types/node": "26.6.2",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vitest": "5.0.1",
+    "playwright": "1.63.0"
+  }
+}

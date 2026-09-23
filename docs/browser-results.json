@@ -1,0 +1,39 @@
+{
+  "browser": "153.0.8010.12",
+  "productionManifestUnmodified": true,
+  "toolbarAction": true,
+  "nativeSidePanel": true,
+  "testedWidths": [
+    380,
+    280
+  ],
+  "counts": {
+    "input": 6,
+    "change": 6,
+    "submit": 0
+  },
+  "checks": [
+    "profile sample",
+    "scan",
+    "edit",
+    "deselect",
+    "changed field skipped",
+    "select exact match",
+    "existing value preserved",
+    "sensitive fields excluded",
+    "no submission",
+    "normal events",
+    "no horizontal overflow",
+    "no runtime or app console errors",
+    "five label sources",
+    "hidden and honeypot exclusion",
+    "malicious label rejection",
+    "sensitive described-by context",
+    "replaced node skipped",
+    "new nonempty value preserved",
+    "readonly/type/option changes skipped",
+    "URL and document changes rejected",
+    "profile edit/save/delete",
+    "keyboard navigation"
+  ]
+}
