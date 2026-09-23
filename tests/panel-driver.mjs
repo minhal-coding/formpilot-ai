@@ -34,8 +34,8 @@ export async function attachPanel(browserCdp, targetId) {
     await evaluate(label => { const caption = Array.from(document.querySelectorAll('label')).find(l => l.textContent === label); const input = document.getElementById(caption.htmlFor); input.focus(); input.select(); }, label);
     await send('Input.insertText', { text: value });
   }
-  async function screenshot(file, fullPage = true) {
-    if (!fullPage) await evaluate(() => scrollTo(0, 0));
+  async function screenshot(file, fullPage = true, resetScroll = true) {
+    if (!fullPage && resetScroll) await evaluate(() => scrollTo(0, 0));
     const { cssContentSize } = await send('Page.getLayoutMetrics');
     const result = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: fullPage, ...(fullPage ? { clip: { x: 0, y: 0, width: cssContentSize.width, height: cssContentSize.height, scale: 1 } } : {}) });
     await writeFile(file, Buffer.from(result.data, 'base64'));

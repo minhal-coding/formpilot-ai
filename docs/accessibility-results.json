@@ -1,0 +1,64 @@
+{
+  "engine": "axe-core",
+  "states": [
+    {
+      "state": "empty",
+      "violations": []
+    },
+    {
+      "state": "profile",
+      "violations": []
+    },
+    {
+      "state": "suggestions",
+      "violations": []
+    },
+    {
+      "state": "model-setup-error",
+      "violations": []
+    },
+    {
+      "state": "review",
+      "violations": []
+    },
+    {
+      "state": "results",
+      "violations": []
+    },
+    {
+      "state": "changed-page-error",
+      "violations": []
+    },
+    {
+      "state": "no-fields",
+      "violations": []
+    },
+    {
+      "state": "profile-validation",
+      "violations": []
+    },
+    {
+      "state": "model-settings",
+      "violations": []
+    },
+    {
+      "state": "delete-confirmation",
+      "violations": []
+    }
+  ],
+  "widths": [
+    375,
+    768,
+    1280
+  ],
+  "keyboard": [
+    "workflow navigation",
+    "error focus",
+    "invalid field focus",
+    "dialog cancel focus",
+    "Escape and focus return",
+    "16 sequential visible Tab targets"
+  ],
+  "reducedMotion": true,
+  "limitations": "Automated checks and keyboard assertions are not a complete screen-reader or WCAG certification."
+}

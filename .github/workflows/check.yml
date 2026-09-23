@@ -25,3 +25,4 @@ jobs:
             dist/
             docs/screenshots/
             docs/browser-results.json
+            docs/accessibility-results.json

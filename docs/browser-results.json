@@ -4,6 +4,9 @@
   "toolbarAction": true,
   "nativeSidePanel": true,
   "testedWidths": [
+    375,
+    768,
+    1280,
     380,
     280
   ],
@@ -34,6 +37,16 @@
     "readonly/type/option changes skipped",
     "URL and document changes rejected",
     "profile edit/save/delete",
-    "keyboard navigation"
+    "keyboard navigation",
+    "empty selected answer blocks filling",
+    "inline profile validation",
+    "model setup recovery",
+    "no fields and long labels",
+    "Cancel and Escape preserve profile",
+    "reduced motion",
+    "axe across 11 states"
+  ],
+  "fixtures": [
+    "1000ms delay before real profile storage write to observe loading UI; no model inference mocked as live"
   ]
 }

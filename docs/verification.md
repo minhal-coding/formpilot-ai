@@ -42,13 +42,41 @@ Observed: six fields filled, changed email skipped, phone unchanged, existing pr
 3. A malformed demo option omitted Oregon from the DOM. Corrected and verified by an actual select fill.
 4. Chrome's default extension body font shrank inherited controls. Explicit body font inheritance now keeps 14px controls readable.
 
-## Design inspection
+## UI UX Pro Max implementation pass
 
-The generated [`design-concept.png`](design-concept.png) is a design reference only. The actual panel screenshots below were captured with CDP from the native extension panel; the demo screenshot was captured with Playwright. Both the reference and final viewport screenshots were visually inspected.
+UI UX Pro Max CLI **2.15.0** was installed once, Codex-only, in this project with `npx --yes ui-ux-pro-max-cli@2.15.0 init --ai codex`. The generated `.agents/skills/ui-ux-pro-max/SKILL.md`, actual data/script directories, and Python 3.11.15 search execution were verified. See [design-system.md](design-system.md) for the upstream sources/license, exact searches, fit decisions, and design tokens. The skill directories and caches are ignored locally and are not committed or bundled.
+
+The real extension now has grouped profile fields, unsaved feedback, operation-specific busy states, nearby persistent errors, native profile deletion/replacement dialogs, and distinct exact-match/model/edit evidence labels. Selected blank answers have described inline errors and disable filling. The narrow layout prioritizes review actions while the wide layout puts the same real controls beside the answers. No separate application/demo was substituted for the product interface.
+
+The Browser plugin's `browser` skill is absent in this session. The existing extension-capable Playwright/CDP workflow was used to exercise the actual native side-panel target. All previous security tests were preserved.
+
+| Check | Result |
+| --- | --- |
+| Page identity / nonblank UI | Correct native extension URL and meaningful Profile/Suggestions/Review content |
+| Framework overlay / runtime errors | None observed; vanilla DOM build, no uncaught exceptions or relevant console errors |
+| Full flow | Profile → scan → edit/deselect → approve fill → actual results; 6 normal input/change events, 0 submissions |
+| Responsive screenshots | Profile, Suggestions, Review, results, empty state, model-setup error at **375×900, 768×900, 1280×900** |
+| Narrow regression | 280px: long labels/tokens reflow, no horizontal overflow |
+| Error handling | Profile email validation, blank selected answer, missing model setup, changed URL/document, no scanned fields |
+| Keyboard | Workflow navigation, invalid-field/error focus, dialog Cancel/Escape and focus return, 16 sequential focused controls wholly visible with an outline |
+| Motion | `prefers-reduced-motion: reduce` produces zero transition duration |
+| Automated accessibility | axe-core 4.13.0, WCAG 2/2.1/2.2 A/AA tags: **zero violations in 11 tested states** |
+
+Wide screenshots use CDP viewport emulation on the same native side-panel target; they are not separate marketing pages. Automated accessibility checks run primarily at the narrow viewport. They do not certify complete WCAG compliance or substitute for assistive-technology user testing.
+
+Loading verification deliberately delays the real storage call by 1000ms in the test browser, then forwards to actual extension storage. [`loading-fixture.png`](screenshots/loading-fixture.png) is labeled as this controlled-latency fixture, not a claim about a live model/network response. No runtime mock, fixture delay, skill asset, or axe script is included in `dist/`.
+
+Visual findings fixed: secondary actions initially pushed the first answer below the 375px viewport; review controls were compacted and the optional model action moved into a disclosure. Navigation text at 280px was also adjusted to avoid breaking Suggestions across lines. Final viewport images were inspected for hierarchy, readable sources, focus rings, control boundaries, status meaning, and long-text reflow.
+
+Machine-readable reports: [accessibility-results.json](accessibility-results.json), [browser-results.json](browser-results.json).
+
+## Original design reference
+
+The generated [`design-concept.png`](design-concept.png) is the original design reference only. The current implementation is governed by [design-system.md](design-system.md). Actual panel screenshots were captured with CDP from the native extension panel; the demo screenshot was captured with Playwright.
 
 Compared: white background, navy text/blue accent, F mark and header, three-tab navigation, heading hierarchy, field/row spacing, fine dividers, input geometry, visible source captions, autosave warning, and primary buttons. The core visual system is implemented. The reference's incorrect work-authorization suggestion and unrestricted custom-fact examples were deliberately replaced with manual-only handling and safer guidance. Fictional data and required explanatory copy differ from the generated reference. This is not a pixel-identical copy of the mockup.
 
-Native-size viewport checks: 380×900 and 280×800. Full-page screenshots also show all scrollable fields. No clipped labels or overlapping controls were observed in the inspected viewports.
+Viewport checks include 375×900, 768×900, 1280×900, 380×900, and 280×800. Full-page screenshots also show scrollable fields. No clipped labels or overlapping controls were observed in the inspected viewports.
 
 ## Optional model status
 
@@ -64,8 +92,10 @@ The adapter's schema/evidence validation, missing-server failure, and bridge for
 
 ## Actual screenshots
 
-![Profile at 380px](screenshots/profile-viewport.png)
-![Review at 380px](screenshots/review-viewport.png)
-![Results at 280px](screenshots/narrow-viewport.png)
+![Review at 375px](screenshots/review-375.png)
+![Profile at 768px](screenshots/profile-768.png)
+![Results at 1280px](screenshots/results-1280.png)
+
+Additional states: [model setup error](screenshots/model-setup-error-375.png), [inline validation](screenshots/profile-validation.png), [delete confirmation](screenshots/delete-confirmation.png), [local model settings](screenshots/model-settings.png), [no fields](screenshots/no-fields.png), [long labels](screenshots/long-label.png), [empty](screenshots/empty-375.png).
 
 Full-page evidence: [profile](screenshots/profile.png), [suggestions](screenshots/suggestions.png), [review](screenshots/review.png), [results](screenshots/results.png), [narrow results](screenshots/narrow.png), [filled demo](screenshots/filled-demo.png). Machine-readable primary-flow results: [`browser-results.json`](browser-results.json).

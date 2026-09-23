@@ -36,6 +36,12 @@ All sample identity, education, and work details are fictional.
 
 Actual browser screenshots and verification details are in [`docs/`](docs/). `docs/design-concept.png` is an AI-generated design reference, **not evidence of working functionality**.
 
+### Interface and accessibility
+
+The real side panel includes grouped profile fields, unsaved-change feedback, sourced answer review, per-field results, and nearby error recovery. A local model proposal is labeled separately from an exact match; editing any answer relabels it **Edited by you**. Blank selected answers block filling until corrected or deselected. Deleting or replacing a saved profile requires a cancellable confirmation.
+
+The interface reflows from a narrow extension panel to a bounded two-column workspace. It uses native labeled controls, visible keyboard focus, error announcements, and reduced-motion support. The [project design system](docs/design-system.md) records UI UX Pro Max 2.15.0 installation, actual searches, and which recommendations fit this product. Third-party skill assets stay local and are not shipped with the application. See [verification](docs/verification.md) for screenshots and the limits of accessibility testing.
+
 ## Optional local model
 
 The deterministic path works without any server or model. Live inference requires a locally installed [Ollama](https://docs.ollama.com/) model. Downloading a model consumes disk space and bandwidth; this project does not download one automatically.
